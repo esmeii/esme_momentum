@@ -7,9 +7,9 @@ const TODOS_KEY = "todos";
 
 function handleTodoSubmit(event){
     event.preventDefault();
-    todoInput.value="";
+    //todoInput.value="";
     const newTodo = { //todo를 아이디를 가진 오브젝트로 생성한다.
-        text: newTodo,
+        text: todoInput.value,
         id : Date.now(),
     };
     paintTodo(newTodo);
