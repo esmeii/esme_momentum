@@ -1,9 +1,9 @@
-const todoForm = document.getElementById("todo-form");
+const todoForm = document.querySelector("todo-form");
 const todoInput = todoForm.querySelector("input");
-const todoList = document.getElementById("todo-list");
+const todoList = document.querySelector("todo-list");
 let todos = []; //saving todos
-
 const TODOS_KEY = "todos";
+const DELBTN_ID = "delBtn";
 
 function handleTodoSubmit(event){
     event.preventDefault();
@@ -19,10 +19,23 @@ function handleTodoSubmit(event){
 function deleteTodo(event){
     //어떤 투두를 지울지 결정하기 위해서는 그 투두에 대한 정보를 얻어야 한다.
     // 클릭 시 어떤 요소가 클릭 됐는지 정보를 얻을 수 있다.
-    const deleteLi = event.target.parentElement;
-    todos = todos.filter(todo => todo.id !== deleteLi.id); //todos의 요소들을 deleteLi의 아이디와 비교해서 
-    // 삭제할 것과 아이디가 같으면 거른다(삭제한다.)
-    deleteLi.remove();
+    // const deleteLi = event.target.parentElement;
+    // todos = todos.filter(todo => todo.id !== deleteLi.id); //todos의 요소들을 deleteLi의 아이디와 비교해서 
+    // // 삭제할 것과 아이디가 같으면 거른다(삭제한다.)
+    // deleteLi.remove();
+    // saveTodo();
+    const btn = event.target;
+    const li = btn.parentNode;
+    const cleanTodos = todos.filter(todo => {
+        return todo.id !==parseInt(li.id);
+    });
+    cleanTodos.forEach(todo=>{
+        if(todo.id > parseInt(li.id)){
+            todo.id = todo.id -1;
+        }
+    });
+    todoList.removeChild(li);
+    todos = cleanTodos;
     saveTodo();
 }
 function saveTodo (){
@@ -31,15 +44,28 @@ function saveTodo (){
 }
 function paintTodo (newTodo){
     const newLi = document.createElement("li");
-    newLi.id = newTodo.id;
     const newSpan = document.createElement("span");
-    const deleteBtn = document.createElement("button");
+    const delBtn = document.createElement("button");
+    const newId = todos.length + 1;
+
+    newLi.id = newTodo.id;
     newSpan.innerText=newTodo.text;
-    deleteBtn.innerText = "❌";
-    deleteBtn.addEventListener("click", deleteTodo);
+
+    delBtn.innerText = "❌";
+    delBtn.addEventListener("click", deleteTodo);
+    delBtn.id = DELBTN_ID;
+
     newLi.appendChild(newSpan); //리스트 아이템 안에 스팬을 추가한다.
-    newLi.appendChild(deleteBtn);
+    newLi.appendChild(delBtn);
     todoList.appendChild(newLi);
+    newLi.id = newId;
+
+    const todoObj = {
+        text: text,
+        id : newId
+    };
+    todos.push(todoObj);
+    saveTodo();
 } 
 todoForm.addEventListener("submit", handleTodoSubmit);
 
