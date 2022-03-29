@@ -1,46 +1,46 @@
-const quotes = [ //object array
+const quotes = [
     {
-        quote: "sample1",
-        author: "pes",
+      quote: "The way to get started is to quit talking and begin doing.",
+      author: "Walt Disney",
     },
     {
-        quote: "sample2",
-        author: "pes",
+      quote: "Life is what happens when you're busy making other plans.",
+      author: "John Lennon",
     },
     {
-        quote: "sample3",
-        author: "pes",
+      quote:
+        "The world is a book and those who do not travel read only one page.",
+      author: "Saint Augustine",
     },
     {
-        quote: "sample4",
-        author: "pes",
+      quote: "Life is either a daring adventure or nothing at all.",
+      author: "Helen Keller",
     },
     {
-        quote: "sample5",
-        author: "pes",
+      quote: "To Travel is to Live",
+      author: "Hans Christian Andersen",
     },
     {
-        quote: "sample6",
-        author: "pes",
+      quote: "Only a life lived for others is a life worthwhile.",
+      author: "Albert Einstein",
     },
     {
-        quote: "sample7",
-        author: "pes",
+      quote: "You only live once, but if you do it right, once is enough.",
+      author: "Mae West",
     },
     {
-        quote: "sample8",
-        author: "pes",
+      quote: "Never go on trips with anyone you do not love.",
+      author: "Hemmingway",
     },
     {
-        quote: "sample9",
-        author: "pes",
+      quote: "We wander for distraction, but we travel for fulfilment.",
+      author: "Hilaire Belloc",
     },
     {
-        quote: "sample10",
-        author: "pes",
+      quote: "Travel expands the mind and fills the gap.",
+      author: "Sheda Savage",
     },
-
-];
+  ];
 
 const quote = document.querySelector("#quote span:first-child");
 const author = document.querySelector("#quote span:last-child");
